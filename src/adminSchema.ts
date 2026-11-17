@@ -95,7 +95,8 @@ export const CONFIG: KindConfig[] = [
     fields: [
       { key: 'name', label: 'Nome', type: 'text', required: true },
       { key: 'address', label: 'Indirizzo', type: 'text', required: true },
-      { key: 'hours', label: 'Orari di apertura', type: 'text', required: true },
+      { key: 'hours', label: 'Orari di apertura', type: 'text', required: true, help: 'es. 10 AM – 7:30 PM' },
+      { key: 'openingNote', label: 'Giorni / chiusure', type: 'text', help: 'es. Open every day, Closed Monday morning' },
       { key: 'phone', label: 'Telefono', type: 'text' },
       W,
     ],

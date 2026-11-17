@@ -1,1 +1,26 @@
-[]
+[
+  {
+    "id": "murmur",
+    "brand": "Murmur",
+    "start": "2027-01-18T10:00:00+01:00",
+    "end": "2027-01-18T13:00:00+01:00",
+    "address": "Via Giuditta Sidoli 19, Milan",
+    "notes": "By appointment only"
+  },
+  {
+    "id": "hayley-menzies",
+    "brand": "Hayley Menzies",
+    "start": "2027-01-18T15:00:00+01:00",
+    "end": "2027-01-18T19:00:00+01:00",
+    "address": "Via Giuditta Sidoli 19, Milan",
+    "notes": "Open to buyers and press"
+  },
+  {
+    "id": "mantero-1902",
+    "brand": "Mantero 1902",
+    "start": "2027-01-19T11:00:00+01:00",
+    "end": "2027-01-19T14:00:00+01:00",
+    "address": "Via Giuditta Sidoli 19, Milan",
+    "notes": "By appointment only"
+  }
+]

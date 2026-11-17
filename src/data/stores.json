@@ -1,1 +1,23 @@
-[]
+[
+  {
+    "id": "antonia",
+    "name": "Antonia",
+    "address": "Portrait Milano, Via Sant’Andrea 10, Milan, Italy",
+    "hours": "10:30 AM – 7:30 PM",
+    "openingNote": "Open every day"
+  },
+  {
+    "id": "antonioli",
+    "name": "Antonioli",
+    "address": "Via Pasquale Paoli 1, 20143 Milan, Italy",
+    "hours": "11 AM – 7:30 PM",
+    "openingNote": "Closed Monday morning"
+  },
+  {
+    "id": "10-corso-como",
+    "name": "10 Corso Como",
+    "address": "Corso Como 10, 20154 Milan, Italy",
+    "hours": "10 AM – 7:30 PM",
+    "openingNote": "Open every day"
+  }
+]

@@ -17,7 +17,7 @@ export default function Presentations() {
           <Fragment key={p.id}>
             {(i === 0 || dayLong(items[i - 1].start) !== dayLong(p.start)) && <MonthHeading>{dayLong(p.start)}</MonthHeading>}
             <Card style={{ flexDirection: 'row', gap: 12 }}>
-              <DateBadge top={monthDay(p.start)} bottom={`${timeLabel(p.start)}${p.end ? `\n— ${timeLabel(p.end)}` : ''}`} />
+              <DateBadge top={monthDay(p.start)} bottom={`${timeLabel(p.start)}${p.end ? `\n—\n${timeLabel(p.end)}` : ''}`} />
               <View style={{ flex: 1 }}>
                 <Text style={{ fontFamily: fonts.black, fontSize: 13, color: colors.ink }}>{p.brand.toUpperCase()}</Text>
                 <Row icon="map-pin" text={p.address} />

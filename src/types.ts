@@ -12,6 +12,6 @@ export type Campaign = {
 };
 export type Showroom = { id: string; name: string; email?: string; phone?: string; website?: string; campaigns: Campaign[] };
 export type Brand = { id: string; name: string; website?: string };
-export type Store = { id: string; name: string; address: string; hours: string; phone?: string; website?: string };
+export type Store = { id: string; name: string; address: string; hours: string; openingNote?: string; phone?: string; website?: string };
 export type Contact = { id: string; name: string; tagline?: string; email?: string; website?: string };
 export type Partner = { id: string; name: string; url?: string };

@@ -1,0 +1,26 @@
+[
+  {
+    "id": "prada",
+    "brand": "Prada",
+    "start": "2027-01-18T14:00:00+01:00",
+    "address": "Via Lorenzini 14, Milan",
+    "notes": "By invitation only",
+    "website": "https://www.prada.com"
+  },
+  {
+    "id": "fendi",
+    "brand": "Fendi",
+    "start": "2027-01-19T11:00:00+01:00",
+    "address": "Viale Umbria 42, Milan",
+    "notes": "By invitation only",
+    "website": "https://www.fendi.com"
+  },
+  {
+    "id": "marni",
+    "brand": "Marni",
+    "start": "2027-01-19T17:00:00+01:00",
+    "address": "Via Solari 35, Milan",
+    "notes": "By invitation only",
+    "website": "https://www.marni.com"
+  }
+]

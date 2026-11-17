@@ -1,0 +1,25 @@
+[
+  {
+    "id": "pitti-uomo",
+    "name": "Pitti Uomo",
+    "start": "2027-01-12",
+    "end": "2027-01-16",
+    "address": "Via Filippo Strozzi 1, 50129 Florence, Italy",
+    "website": "https://www.pittimmagine.com"
+  },
+  {
+    "id": "white-milano",
+    "name": "White Milano",
+    "start": "2027-02-25",
+    "end": "2027-02-28",
+    "address": "Via Tortona 27, 20144 Milan, Italy"
+  },
+  {
+    "id": "tranoi",
+    "name": "Tranoi",
+    "start": "2027-03-04",
+    "end": "2027-03-08",
+    "address": "16 Place de la Bourse, 75002 Paris, France",
+    "website": "https://www.tranoi.com"
+  }
+]

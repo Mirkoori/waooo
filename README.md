@@ -53,8 +53,13 @@ eas submit --platform all
 Servono un account Apple Developer e uno Google Play Console. Bundle id / package
 attuali: `com.waooo.app` (da cambiare in `app.json` se vuoi un altro identificativo).
 
+## Pubblicazione negli store
+
+Tutto il materiale è in `docs/store/`: `PUBBLICAZIONE-CHECKLIST.md` (passi, account, build), `SCHEDA-STORE.md` (testi, grafiche, screenshot), `PRIVACY-E-CONFORMITA.md` (risposte ai moduli privacy/età) e `NOTE-PER-LA-REVISIONE.md`.
+Le pagine legali pubbliche (privacy, termini, assistenza) si generano da `legal.config.json` con `npm run legal`.
+
 ## Da fare prima dello store
 
-- Icona e splash definitive (ora sono quelle di default di Expo in `assets/`)
+- Compilare `legal.config.json` (titolare, indirizzo, email) e rigenerare le pagine legali
 - Dati reali mancanti: contatti WAOOO / Camera Showroom Milano, email e telefono showroom, siti dei brand, store, presentations
 - Per Events: data di "Artisanal Evolution" (ora "Date TBA")

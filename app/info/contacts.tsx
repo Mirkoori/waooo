@@ -1,7 +1,8 @@
-import { Text, View } from 'react-native';
+import { Pressable, Text, View } from 'react-native';
 import { Btn, BtnRow, Card, Header, List, Logo, Screen } from '../../src/ui';
 import { useData } from '../../src/data';
 import { openUrl, sendEmail } from '../../src/actions';
+import { LEGAL_LINKS } from '../../src/links';
 import { colors, fonts } from '../../src/theme';
 
 export default function Contacts() {
@@ -24,6 +25,13 @@ export default function Contacts() {
             </BtnRow>
           </Card>
         ))}
+        <View style={{ flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center', gap: 16, marginTop: 28 }}>
+          {LEGAL_LINKS.map((l) => (
+            <Pressable key={l.url} onPress={() => openUrl(l.url)} hitSlop={8}>
+              <Text style={{ fontFamily: fonts.bold, fontSize: 10, color: colors.muted, textDecorationLine: 'underline' }}>{l.label}</Text>
+            </Pressable>
+          ))}
+        </View>
       </List>
     </Screen>
   );

@@ -17,8 +17,10 @@
       "supportsTablet": false,
       "bundleIdentifier": "com.waooo.app",
       "infoPlist": {
-        "NSCalendarsUsageDescription": "WAOOO adds Fashion Week events to your calendar.",
-        "NSCalendarsFullAccessUsageDescription": "WAOOO adds Fashion Week events to your calendar."
+        "ITSAppUsesNonExemptEncryption": false,
+        "NSCalendarsUsageDescription": "WAOOO lets you add Fashion Week events to your calendar.",
+        "NSCalendarsFullAccessUsageDescription": "WAOOO lets you add Fashion Week events to your calendar.",
+        "NSCalendarsWriteOnlyAccessUsageDescription": "WAOOO lets you add Fashion Week events to your calendar."
       }
     },
     "android": {
@@ -26,10 +28,10 @@
       "adaptiveIcon": {
         "backgroundColor": "#141414",
         "foregroundImage": "./assets/android-icon-foreground.png",
-        "backgroundImage": "./assets/android-icon-background.png",
         "monochromeImage": "./assets/android-icon-monochrome.png"
       },
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "allowBackup": false
     },
     "web": {
       "favicon": "./assets/favicon.png",
@@ -39,16 +41,12 @@
     "plugins": [
       "expo-router",
       "expo-font",
-      [
-        "expo-calendar",
-        {
-          "calendarPermission": "WAOOO adds Fashion Week events to your calendar."
-        }
-      ]
+      "expo-calendar"
     ],
     "experiments": {
       "typedRoutes": true,
       "baseUrl": "/waooo"
-    }
+    },
+    "description": "WAOOO — Milan Fashion Week, unlocked. Calendar of fashion weeks, runway shows, presentations, events, trade shows, showrooms, brands and stores."
   }
 }

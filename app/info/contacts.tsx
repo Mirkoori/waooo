@@ -1,10 +1,11 @@
 import { Text, View } from 'react-native';
 import { Btn, BtnRow, Card, Header, List, Logo, Screen } from '../../src/ui';
-import { data } from '../../src/data';
+import { useData } from '../../src/data';
 import { openUrl, sendEmail } from '../../src/actions';
 import { colors, fonts } from '../../src/theme';
 
 export default function Contacts() {
+  const data = useData();
   return (
     <Screen section="info" header={<Header section="info" label="03 · INFO" title="CONTACTS" />}>
       <List>

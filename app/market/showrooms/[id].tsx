@@ -3,12 +3,13 @@ import { Pressable, Text, View } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { Btn, Card, Empty, Header, List, Pill, Screen } from '../../../src/ui';
-import { data } from '../../../src/data';
+import { useData } from '../../../src/data';
 import { rangeLabel } from '../../../src/dates';
 import { callNumber, openUrl, sendEmail } from '../../../src/actions';
 import { colors, fonts } from '../../../src/theme';
 
 export default function ShowroomDetail() {
+  const data = useData();
   const { id } = useLocalSearchParams<{ id: string }>();
   const router = useRouter();
   const s = data.showrooms.find((x) => x.id === id);

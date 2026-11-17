@@ -2,12 +2,13 @@ import { Pressable, Text, View } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 import { Btn, Card, Empty, Header, List, Pill, Screen } from '../../../src/ui';
-import { data } from '../../../src/data';
+import { useData } from '../../../src/data';
 import { rangeLabel } from '../../../src/dates';
 import { callNumber, openUrl, sendEmail } from '../../../src/actions';
 import { colors, fonts } from '../../../src/theme';
 
 export default function Showrooms() {
+  const data = useData();
   const router = useRouter();
   return (
     <Screen section="market" header={<Header section="market" label="02 · MARKET" title="SHOWROOMS" />}>

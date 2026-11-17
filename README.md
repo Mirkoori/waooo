@@ -27,17 +27,19 @@ npm install
 npx expo start        # poi scansiona il QR con Expo Go, oppure premi i / a
 ```
 
-## Aggiornare i contenuti
+## Aggiornare i contenuti (area admin)
 
-Modifica i file in `src/data/` (date in formato ISO, es. `2027-01-18` oppure
-`2027-01-18T14:00:00+01:00` per gli orari). I campi opzionali (`website`, `email`,
-`phone`, …) si possono omettere: il pulsante corrispondente non viene mostrato
-dove è previsto così, altrimenti non fa nulla finché il dato non c'è.
+I contenuti stanno nel database Supabase (tabella `waooo_items`) e si modificano da
+**`/admin`** (sul sito: https://mirkoori.github.io/waooo/admin), con login email + password.
+L'app legge il database a ogni apertura; se è offline usa i file in `src/data/*.json`
+come copia di riserva (sono anche i dati iniziali importati nel database).
 
-- **Con aggiornamenti OTA** (consigliato): dopo la prima pubblicazione negli store,
-  `eas update` invia i nuovi JSON agli utenti senza una nuova revisione Apple/Google.
-- Se in futuro i dati devono essere modificabili da pannello, basta cambiare `src/data.ts`
-  (es. leggere da Supabase) senza toccare le schermate.
+- Lettura: pubblica. Scrittura: solo le email presenti nella tabella `waooo_admins`
+  (regole RLS nel database, non solo nella pagina).
+- **Aggiungere un admin:** 1) Supabase → Authentication → Users → *Add user* (email + password,
+  spunta *Auto Confirm*); 2) Table Editor → `waooo_admins` → inserisci la stessa email.
+- Le date/ore delle sfilate sono sempre in ora di Milano.
+- Se cambi la struttura dei dati, aggiorna `src/types.ts`, `src/adminSchema.ts` e (se serve) i JSON di riserva.
 
 ## Pubblicazione
 

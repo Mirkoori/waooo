@@ -1,12 +1,13 @@
 import { Fragment } from 'react';
 import { Text, View } from 'react-native';
 import { Btn, Card, DateBadge, Header, List, MonthHeading, Screen } from '../../src/ui';
-import { data } from '../../src/data';
+import { useData } from '../../src/data';
 import { dayRange, monthShort, monthYearLong, sortByStart } from '../../src/dates';
 import { addToCalendar, localDay } from '../../src/actions';
 import { colors, fonts } from '../../src/theme';
 
 export default function Weeks() {
+  const data = useData();
   const weeks = sortByStart(data.weeks);
   return (
     <Screen section="fashion" header={<Header section="fashion" label="01 · FASHION WEEK" title="FASHION WEEKS" />}>

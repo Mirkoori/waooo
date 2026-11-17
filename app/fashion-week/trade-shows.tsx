@@ -1,11 +1,12 @@
 import { Text, View } from 'react-native';
 import { Btn, BtnRow, Card, DateBadge, Empty, Header, List, Row, Screen } from '../../src/ui';
-import { data } from '../../src/data';
+import { useData } from '../../src/data';
 import { dayRange, monthShort, sortByStart } from '../../src/dates';
 import { addToCalendar, localDay, openUrl, sendEmail } from '../../src/actions';
 import { colors, fonts } from '../../src/theme';
 
 export default function TradeShows() {
+  const data = useData();
   return (
     <Screen section="fashion" header={<Header section="fashion" label="01 · FASHION WEEK" title="TRADE SHOWS" />}>
       <List>

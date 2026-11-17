@@ -1,10 +1,11 @@
 import { Text } from 'react-native';
 import { Btn, BtnRow, Card, Empty, Header, List, Row, Screen } from '../../src/ui';
-import { data } from '../../src/data';
+import { useData } from '../../src/data';
 import { callNumber, openMap, openUrl } from '../../src/actions';
 import { colors, fonts } from '../../src/theme';
 
 export default function Stores() {
+  const data = useData();
   return (
     <Screen section="market" header={<Header section="market" label="02 · MARKET" title="STORES" />}>
       <List>

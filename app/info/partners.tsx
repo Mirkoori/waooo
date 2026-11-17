@@ -1,11 +1,12 @@
 import { Pressable, Text, View } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import { Header, List, Screen } from '../../src/ui';
-import { data } from '../../src/data';
+import { useData } from '../../src/data';
 import { openUrl } from '../../src/actions';
 import { colors, fonts } from '../../src/theme';
 
 export default function Partners() {
+  const data = useData();
   return (
     <Screen section="info" header={<Header section="info" label="03 · INFO" title="PARTNERS" />}>
       <List>

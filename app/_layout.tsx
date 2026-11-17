@@ -7,6 +7,7 @@ import {
   useFonts, Montserrat_500Medium, Montserrat_600SemiBold, Montserrat_700Bold, Montserrat_800ExtraBold, Montserrat_900Black,
 } from '@expo-google-fonts/montserrat';
 import { colors } from '../src/theme';
+import { DataProvider } from '../src/data';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -17,7 +18,9 @@ export default function RootLayout() {
   return (
     <SafeAreaProvider>
       <StatusBar style="dark" />
-      <Stack screenOptions={{ headerShown: false, contentStyle: { backgroundColor: colors.bg }, animation: 'slide_from_right' }} />
+      <DataProvider>
+        <Stack screenOptions={{ headerShown: false, contentStyle: { backgroundColor: colors.bg }, animation: 'slide_from_right' }} />
+      </DataProvider>
     </SafeAreaProvider>
   );
 }

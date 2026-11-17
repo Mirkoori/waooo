@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Image, Pressable, Text, View } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import { Btn, BtnRow, Card, Empty, Header, List, Row, Screen } from '../../src/ui';
-import { data } from '../../src/data';
+import { useData } from '../../src/data';
 import { dayLong } from '../../src/dates';
 import { addToCalendar, localDay, openMap } from '../../src/actions';
 import { colors, fonts } from '../../src/theme';
@@ -50,6 +50,7 @@ function EventCard({ e, open, toggle }: { e: EventItem; open: boolean; toggle: (
 }
 
 export default function Events() {
+  const data = useData();
   const [openId, setOpenId] = useState<string | null>(data.events[0]?.id ?? null);
   return (
     <Screen section="fashion" header={<Header section="fashion" label="01 · FASHION WEEK" title="EVENTS" />}>

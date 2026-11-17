@@ -2,12 +2,13 @@ import { useMemo, useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import { Href, useRouter } from 'expo-router';
 import { Empty, Header, List, Screen, SearchField } from '../src/ui';
-import { data } from '../src/data';
+import { useData } from '../src/data';
 import { colors, fonts } from '../src/theme';
 
 type Hit = { key: string; group: string; title: string; sub?: string; href: Href };
 
 export default function Search() {
+  const data = useData();
   const router = useRouter();
   const [q, setQ] = useState('');
   const hits = useMemo<Hit[]>(() => {
@@ -24,7 +25,7 @@ export default function Search() {
     ];
     const n = q.trim().toLowerCase();
     return n ? all.filter((h) => `${h.title} ${h.sub ?? ''}`.toLowerCase().includes(n)) : [];
-  }, [q]);
+  }, [q, data]);
 
   const groups = [...new Set(hits.map((h) => h.group))];
   return (

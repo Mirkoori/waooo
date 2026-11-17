@@ -1,12 +1,13 @@
 import { Fragment } from 'react';
 import { Text, View } from 'react-native';
 import { Btn, BtnRow, Card, DateBadge, Empty, Header, List, MonthHeading, NoteBox, Row, Screen } from '../../src/ui';
-import { data } from '../../src/data';
+import { useData } from '../../src/data';
 import { dayLong, monthDay, sortByStart, timeLabel } from '../../src/dates';
 import { addToCalendar, openUrl } from '../../src/actions';
 import { colors, fonts } from '../../src/theme';
 
 export default function Presentations() {
+  const data = useData();
   const items = sortByStart(data.presentations);
   return (
     <Screen section="fashion" header={<Header section="fashion" label="01 · FASHION WEEK" title="PRESENTATIONS" />}>

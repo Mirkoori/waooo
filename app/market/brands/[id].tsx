@@ -2,18 +2,19 @@ import { Pressable, Text, View } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { Btn, Card, Empty, Header, List, Pill, Screen } from '../../../src/ui';
-import { data, showroomsForBrand } from '../../../src/data';
+import { useData, showroomsForBrand } from '../../../src/data';
 import { rangeLabel } from '../../../src/dates';
 import { openUrl, sendEmail } from '../../../src/actions';
 import { colors, fonts } from '../../../src/theme';
 
 export default function BrandDetail() {
+  const data = useData();
   const { id } = useLocalSearchParams<{ id: string }>();
   const router = useRouter();
   const brand = data.brands.find((b) => b.id === id);
   const header = <Header section="market" label="02 · MARKET" title="BRANDS" />;
   if (!brand) return <Screen section="market" header={header}><Empty text="Brand not found." /></Screen>;
-  const rooms = showroomsForBrand(brand.id);
+  const rooms = showroomsForBrand(data, brand.id);
 
   return (
     <Screen section="market" header={header}>

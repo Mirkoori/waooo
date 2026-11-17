@@ -3,10 +3,11 @@ import { Pressable, Text, View } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 import { Empty, Header, List, Screen, SearchField } from '../../../src/ui';
-import { data, showroomsForBrand } from '../../../src/data';
+import { useData, showroomsForBrand } from '../../../src/data';
 import { colors, fonts } from '../../../src/theme';
 
 export default function Brands() {
+  const data = useData();
   const router = useRouter();
   const [q, setQ] = useState('');
   const groups = useMemo(() => {
@@ -14,7 +15,7 @@ export default function Brands() {
     const map = new Map<string, typeof list>();
     list.forEach((b) => { const k = /^[a-z]/i.test(b.name) ? b.name[0].toUpperCase() : '#'; map.set(k, [...(map.get(k) ?? []), b]); });
     return [...map.entries()].sort(([a], [b]) => (a === '#' ? -1 : b === '#' ? 1 : a.localeCompare(b)));
-  }, [q]);
+  }, [q, data]);
 
   return (
     <Screen section="market" header={<Header section="market" label="02 · MARKET" title="BRANDS" />}>
@@ -26,7 +27,7 @@ export default function Brands() {
             <Text style={{ fontFamily: fonts.extra, fontSize: 10, color: '#3A3833', marginTop: 8, marginBottom: 6 }}>{letter}</Text>
             <View style={{ backgroundColor: colors.card, borderRadius: 14, overflow: 'hidden' }}>
               {brands.map((b, i) => {
-                const rooms = showroomsForBrand(b.id).map((x) => `${x.showroom.name} showroom`).join(', ');
+                const rooms = showroomsForBrand(data, b.id).map((x) => `${x.showroom.name} showroom`).join(', ');
                 return (
                   <Pressable key={b.id} onPress={() => router.push(`/market/brands/${b.id}`)} style={{ flexDirection: 'row', alignItems: 'center', paddingHorizontal: 12, paddingVertical: 9, borderTopWidth: i ? 1 : 0, borderTopColor: colors.bg }}>
                     <View style={{ flex: 1 }}>

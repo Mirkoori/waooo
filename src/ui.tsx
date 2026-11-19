@@ -186,7 +186,7 @@ export function SectionStack({ show, big }: { show: SectionKey[]; big?: boolean 
             onPress={() => router.replace(s.href)}
             style={[
               styles.stackCard,
-              { backgroundColor: s.color, marginTop: i === 0 ? 0 : -46, minHeight: isLast ? (big ? 166 : 120) : 100 },
+              { backgroundColor: s.color, marginTop: i === 0 ? 0 : big ? -46 : -26, minHeight: isLast ? (big ? 166 : 120) : 100 },
             ]}
           >
             <View style={styles.stackTop}>
@@ -194,7 +194,7 @@ export function SectionStack({ show, big }: { show: SectionKey[]; big?: boolean 
               <Text style={styles.stackTitle}>{s.title}</Text>
               <Feather name="arrow-right" size={18} color={colors.ink} />
             </View>
-            {big ? <Text style={styles.stackSub}>{s.subtitle}</Text> : null}
+            <Text style={styles.stackSub}>{s.subtitle}</Text>
             {isLast && big ? <Text style={styles.stackBig}>FW27</Text> : null}
           </Pressable>
         );

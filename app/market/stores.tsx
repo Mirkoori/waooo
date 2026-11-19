@@ -8,7 +8,7 @@ import { colors, fonts } from '../../src/theme';
 export default function Stores() {
   const data = useData();
   return (
-    <Screen section="market" header={<Header section="market" label="02 · MARKET" title="STORES" />}>
+    <Screen section="market" header={<Header section="market" label="02 · SALES" title="STORES" />}>
       <List>
         {data.stores.length === 0 && <Empty text="Stores will appear here soon." />}
         {data.stores.map((s) => (

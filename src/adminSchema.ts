@@ -1,6 +1,6 @@
 import type { Kind } from './data';
 
-export type FieldType = 'text' | 'textarea' | 'date' | 'datetime' | 'time' | 'bool' | 'campaigns';
+export type FieldType = 'text' | 'textarea' | 'date' | 'datetime' | 'time' | 'bool' | 'number' | 'campaigns';
 export type Field = { key: string; label: string; type: FieldType; required?: boolean; help?: string };
 export type KindConfig = {
   kind: Kind; label: string; singular: string; titleKey: string; subtitle?: (o: any) => string;
@@ -29,7 +29,7 @@ export const CONFIG: KindConfig[] = [
       { key: 'start', label: 'Data e ora (ora di Milano)', type: 'datetime', required: true },
       { key: 'address', label: 'Indirizzo', type: 'text', required: true },
       { key: 'notes', label: 'Note', type: 'text', help: 'es. By invitation only' },
-      W,
+      { key: 'streamUrl', label: 'Link live streaming', type: 'text', help: 'Se vuoto il pulsante LIVE STREAMING resta spento' },
     ],
   },
   {
@@ -50,9 +50,12 @@ export const CONFIG: KindConfig[] = [
     fields: [
       { key: 'name', label: 'Nome', type: 'text', required: true },
       { key: 'date', label: 'Data', type: 'date', help: 'Se vuota l’app mostra "Date TBA" e nasconde "Add to calendar"' },
+      { key: 'endDate', label: 'Data di fine (eventi su più giorni)', type: 'date', help: 'Facoltativa' },
       { key: 'startTime', label: 'Ora di inizio', type: 'time' },
       { key: 'endTime', label: 'Ora di fine', type: 'time' },
       { key: 'invitationOnly', label: 'Solo su invito', type: 'bool' },
+      { key: 'registration', label: 'Registrazione aperta', type: 'bool', help: 'Mostra il pulsante REGISTER nell’app' },
+      { key: 'capacity', label: 'Posti disponibili', type: 'number', help: 'Facoltativo: chiude le registrazioni al raggiungimento' },
       { key: 'description', label: 'Descrizione', type: 'textarea' },
       { key: 'location', label: 'Luogo', type: 'text', required: true },
       { key: 'image', label: 'Immagine (link)', type: 'text', help: 'Indirizzo web di una foto, facoltativo' },
@@ -90,18 +93,6 @@ export const CONFIG: KindConfig[] = [
     ],
   },
   {
-    kind: 'stores', label: 'Stores', singular: 'store', titleKey: 'name', manualOrder: true,
-    subtitle: (o) => o.address,
-    fields: [
-      { key: 'name', label: 'Nome', type: 'text', required: true },
-      { key: 'address', label: 'Indirizzo', type: 'text', required: true },
-      { key: 'hours', label: 'Orari di apertura', type: 'text', required: true, help: 'es. 10 AM – 7:30 PM' },
-      { key: 'openingNote', label: 'Giorni / chiusure', type: 'text', help: 'es. Open every day, Closed Monday morning' },
-      { key: 'phone', label: 'Telefono', type: 'text' },
-      W,
-    ],
-  },
-  {
     kind: 'contacts', label: 'Contacts', singular: 'contatto', titleKey: 'name', manualOrder: true,
     fields: [
       { key: 'name', label: 'Nome', type: 'text', required: true },
@@ -115,6 +106,7 @@ export const CONFIG: KindConfig[] = [
     fields: [
       { key: 'name', label: 'Nome', type: 'text', required: true },
       { key: 'url', label: 'Sito web', type: 'text' },
+      { key: 'description', label: 'Descrizione', type: 'textarea' },
     ],
   },
 ];

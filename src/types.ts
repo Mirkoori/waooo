@@ -1,9 +1,10 @@
 export type Week = { id: string; name: string; city: string; country: string; start: string; end: string };
-export type Runway = { id: string; brand: string; start: string; address: string; notes?: string; website?: string };
+export type Runway = { id: string; brand: string; start: string; address: string; notes?: string; website?: string; streamUrl?: string };
 export type Presentation = { id: string; brand: string; start: string; end?: string; address: string; notes?: string; website?: string };
 export type EventItem = {
   id: string; name: string; date?: string; startTime?: string; endTime?: string;
-  invitationOnly?: boolean; description?: string; image?: string; location: string;
+  endDate?: string; invitationOnly?: boolean; description?: string; image?: string; location: string;
+  registration?: boolean; capacity?: number;
 };
 export type TradeShow = { id: string; name: string; start: string; end: string; address: string; website?: string; email?: string };
 export type DateRange = { start: string; end: string };
@@ -14,4 +15,4 @@ export type Showroom = { id: string; name: string; email?: string; phone?: strin
 export type Brand = { id: string; name: string; website?: string };
 export type Store = { id: string; name: string; address: string; hours: string; openingNote?: string; phone?: string; website?: string };
 export type Contact = { id: string; name: string; tagline?: string; email?: string; website?: string };
-export type Partner = { id: string; name: string; url?: string };
+export type Partner = { id: string; name: string; url?: string; description?: string };

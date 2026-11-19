@@ -18,7 +18,7 @@ export default function Brands() {
   }, [q, data]);
 
   return (
-    <Screen section="market" header={<Header section="market" label="02 · MARKET" title="BRANDS" />}>
+    <Screen section="market" header={<Header section="market" label="02 · SALES" title="BRANDS" />}>
       <List>
         <SearchField value={q} onChangeText={setQ} placeholder="Search brands" />
         {groups.length === 0 && <Empty text="No brand found." />}

@@ -5,12 +5,46 @@
     "campaigns": [
       {
         "city": "Milan",
-        "label": "Sales campaign",
+        "label": "Men’s Collection",
         "ranges": [
           {
             "start": "2027-01-12",
             "end": "2027-02-12"
-          },
+          }
+        ],
+        "address": "Via Giuditta Sidoli 19, 20129 Milan, Italy",
+        "brands": [
+          "4uattro",
+          "anne-caro",
+          "arzu-kaprol",
+          "ava-adore",
+          "christy-lynn",
+          "colorush",
+          "fine-people-community"
+        ]
+      },
+      {
+        "city": "Milan",
+        "label": "Women’s Pre Collection",
+        "ranges": [
+          {
+            "start": "2027-01-12",
+            "end": "2027-02-12"
+          }
+        ],
+        "address": "Via Giuditta Sidoli 19, 20129 Milan, Italy",
+        "brands": [
+          "murmur",
+          "paris-64",
+          "standard-seoul",
+          "the-dynamis-studio",
+          "unbreak-it"
+        ]
+      },
+      {
+        "city": "Milan",
+        "label": "Women’s Main Collection",
+        "ranges": [
           {
             "start": "2027-02-22",
             "end": "2027-03-12"
@@ -39,19 +73,69 @@
       },
       {
         "city": "Paris",
-        "label": "Sales campaign",
+        "label": "Men’s Collection",
         "ranges": [
           {
-            "start": "2027-10-05",
-            "end": "2027-10-09"
+            "start": "2027-01-12",
+            "end": "2027-02-12"
           }
         ],
         "address": "Espace Montaigne, 7 Rond-Point des Champs-Élysées Marcel-Dassault, 75008 Paris, France",
         "brands": [
+          "4uattro",
+          "anne-caro",
+          "arzu-kaprol",
+          "ava-adore",
           "christy-lynn",
+          "colorush",
+          "fine-people-community"
+        ]
+      },
+      {
+        "city": "Paris",
+        "label": "Women’s Pre Collection",
+        "ranges": [
+          {
+            "start": "2027-01-12",
+            "end": "2027-02-12"
+          }
+        ],
+        "address": "Espace Montaigne, 7 Rond-Point des Champs-Élysées Marcel-Dassault, 75008 Paris, France",
+        "brands": [
+          "murmur",
+          "paris-64",
+          "standard-seoul",
+          "the-dynamis-studio",
+          "unbreak-it"
+        ]
+      },
+      {
+        "city": "Paris",
+        "label": "Women’s Main Collection",
+        "ranges": [
+          {
+            "start": "2027-02-22",
+            "end": "2027-03-12"
+          }
+        ],
+        "address": "Espace Montaigne, 7 Rond-Point des Champs-Élysées Marcel-Dassault, 75008 Paris, France",
+        "brands": [
+          "4uattro",
+          "anne-caro",
+          "arzu-kaprol",
+          "ava-adore",
+          "christy-lynn",
+          "colorush",
+          "fine-people-community",
+          "hayley-menzies",
           "mantero-1902",
           "murmur",
+          "paris-64",
+          "standard-seoul",
           "the-dynamis-studio",
+          "unbreak-it",
+          "urbancode",
+          "vegancode",
           "vivienne-marie"
         ]
       }

@@ -21,7 +21,7 @@ Legenda: ✅ già fatto nel repo · ☐ da fare tu (serve un tuo account/dato).
 
 ## 4. App Store Connect
 - ☐ Crea l'app (bundle id `com.waooo.app`), carica testi (`SCHEDA-STORE.md`), screenshot, URL privacy/assistenza.
-- ☐ App Privacy: "Data Not Collected" (vedi `PRIVACY-E-CONFORMITA.md`). Age rating 4+.
+- ☐ App Privacy: Name + Email, App Functionality, linked (vedi `PRIVACY-E-CONFORMITA.md`). Age rating 4+.
 - ☐ Incolla le note di revisione (`NOTE-PER-LA-REVISIONE.md`) e inserisci un contatto.
 
 ## 5. Google Play Console
@@ -41,4 +41,5 @@ Legenda: ✅ già fatto nel repo · ☐ da fare tu (serve un tuo account/dato).
 
 ## 8. Dopo il lancio
 - ☐ Aggiornamenti senza nuova revisione (`eas update`): richiede configurazione `expo-updates` + canale. **Se lo attivi, aggiorna la Privacy Policy** (le richieste di aggiornamento passano dai server Expo).
+- ☐ Registrazioni eventi: cancella i dati entro 90 giorni dall'evento (admin → Registrazioni) e indica nella privacy policy chi è l'organizzatore destinatario.
 - ☐ Ogni modifica a funzioni o dati raccolti → aggiorna privacy, App Privacy e Data safety.

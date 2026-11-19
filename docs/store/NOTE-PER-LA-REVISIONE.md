@@ -1,6 +1,6 @@
 # Note per i revisori (App Store Connect → "App Review Information" / Play Console → "App access")
 
-**Accesso:** l'app NON richiede login né account. Nessuna credenziale da fornire.
+**Accesso:** l'app NON richiede login né account. Nessuna credenziale da fornire. L'unica raccolta dati è il modulo facoltativo REGISTER (Fashion Week → Events → CSM Meets Sustainability): inserire dati di prova qualsiasi con consenso spuntato; genera un biglietto QR salvato sul dispositivo.
 
 **Testo da incollare (inglese):**
 ```

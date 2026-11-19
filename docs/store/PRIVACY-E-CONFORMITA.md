@@ -1,19 +1,19 @@
 # Privacy, classificazione e conformità (risposte per i moduli degli store)
 
-Le risposte descrivono l'app **com'è oggi**: nessun account nell'app, nessuna analytics, nessuna pubblicità, nessun SDK di terzi che raccoglie dati. Se cambia (analisi, login utenti, notifiche push, EAS Update) vanno riviste **insieme alla pagina Privacy** (`legal.config.json` → `npm run legal`).
+Le risposte descrivono l'app **com'è oggi**: nessun account; unica raccolta dati = registrazione facoltativa agli eventi (nome, cognome, email, ruolo); nessuna analytics, nessuna pubblicità, nessun SDK di terzi che raccoglie dati. Se cambia (analisi, login utenti, notifiche push, EAS Update) vanno riviste **insieme alla pagina Privacy** (`legal.config.json` → `npm run legal`).
 
 ## Apple — App Privacy ("nutrition labels")
-- **Data collection:** *Data Not Collected*.
-- Motivo: l'app non invia dati che identificano la persona; l'unica comunicazione è la richiesta dei contenuti al nostro server (Supabase), usata solo per rispondere. Il calendario si apre con la schermata di sistema e l'app non lo legge.
+- **Data collection:** *Data Collected* → **Contact Info: Name, Email Address** (+ ruolo professionale come *Other User Content*/dati forniti dall'utente). Uso: **App Functionality**. **Linked to the user: Sì** (legati al biglietto). **Used for tracking: No**.
+- Motivo: il modulo REGISTER invia i dati al nostro database (Supabase) e li condivide con l'organizzatore dell'evento. Il resto dell'app non invia dati identificativi. Il calendario si apre con la schermata di sistema e l'app non lo legge.
 - ⚠ Verifica finale a carico del titolare: se in futuro usi analytics o conservi indirizzi IP per i tuoi scopi, la risposta cambia.
 - **Tracking (ATT):** no, quindi niente richiesta di tracciamento.
 - **Encryption / export compliance:** l'app usa solo HTTPS standard → esente. Già impostato `ITSAppUsesNonExemptEncryption = false` in `app.json`, così Apple non chiede il questionario a ogni build.
 - **Age rating:** nessun contenuto sensibile (violenza, nudità, gioco d'azzardo, alcol ecc.: tutte risposte "None") → **4+**.
-- **Account deletion:** non richiesta, perché l'app non ha account.
+- **Account deletion:** non richiesta (nessun account); la cancellazione dei dati di registrazione avviene su richiesta via email o dalla scheda Registrazioni dell'admin.
 - **Sign in with Apple:** non richiesto (nessun login di terze parti).
 
 ## Google Play
-- **Data safety:** "This app doesn't collect or share any required user data"; dati cifrati in transito: **Sì**; eliminazione dati: non applicabile (nessun account). 
+- **Data safety:** raccoglie **Personal info → Name, Email address** (facoltativo, funzionalità app); **condiviso con terzi: Sì** (organizzatore dell'evento); cifrati in transito: **Sì**; richiesta di eliminazione: via email (contatto in privacy policy), cancellazione automatica dopo 90 giorni dall'evento.
 - **Content rating (IARC):** tutte "No" → Everyone / PEGI 3.
 - **Target audience:** 18+ (evita le regole per app per famiglie/bambini).
 - **Ads:** nessuna. **App access:** nessun login necessario. **News/Government/Health/Finance:** no.

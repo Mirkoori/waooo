@@ -1,7 +1,7 @@
 [
   {
     "id": "milan-mens-2027",
-    "name": "Milan Men's Fashion Week",
+    "name": "Milan Men’s Fashion Week",
     "city": "Milan",
     "country": "Italy",
     "start": "2027-01-15",
@@ -9,7 +9,7 @@
   },
   {
     "id": "paris-mens-2027",
-    "name": "Paris Men's Fashion Week",
+    "name": "Paris Men’s Fashion Week",
     "city": "Paris",
     "country": "France",
     "start": "2027-01-19",
@@ -17,7 +17,7 @@
   },
   {
     "id": "copenhagen-2027",
-    "name": "Copenhagen Women's & Men's Fashion Week",
+    "name": "Copenhagen Women’s & Men’s Fashion Week",
     "city": "Copenhagen",
     "country": "Denmark",
     "start": "2027-02-02",

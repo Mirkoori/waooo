@@ -1,15 +1,18 @@
 [
   {
     "id": "maximilian-linz",
-    "name": "Maximilian Linz"
+    "name": "Maximilian Linz",
+    "description": "Milan-based press office and PR agency for fashion designers"
   },
   {
     "id": "moddity",
-    "name": "Moddity"
+    "name": "Moddity",
+    "description": "B2B platform connecting designers, showrooms and trade shows with buyers and press"
   },
   {
     "id": "modem",
-    "name": "Modem"
+    "name": "Modem",
+    "description": "International guide for fashion professionals, since 1997"
   },
   {
     "id": "pazzesco",

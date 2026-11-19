@@ -93,11 +93,11 @@ export function HubRow({ title, subtitle, href }: { title: string; subtitle: str
   );
 }
 
-export function Btn({ label, onPress, icon, primary, flex }: { label: string; onPress: () => void; icon?: IconName; primary?: boolean; flex?: boolean }) {
+export function Btn({ label, onPress, icon, primary, flex, disabled }: { label: string; onPress: () => void; icon?: IconName; primary?: boolean; flex?: boolean; disabled?: boolean }) {
   return (
     <Pressable
-      onPress={onPress}
-      style={[styles.btn, primary ? styles.btnPrimary : styles.btnGhost, flex && { flex: 1 }]}
+      onPress={disabled ? undefined : onPress}
+      style={[styles.btn, primary ? styles.btnPrimary : styles.btnGhost, flex && { flex: 1 }, disabled && { opacity: 0.35 }]}
     >
       {icon && <Feather name={icon} size={12} color={primary ? colors.bg : colors.ink} style={{ marginRight: 6 }} />}
       <Text style={[styles.btnText, { color: primary ? colors.bg : colors.ink }]}>{label.toUpperCase()}</Text>

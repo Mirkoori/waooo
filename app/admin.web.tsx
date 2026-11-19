@@ -42,7 +42,7 @@ function toRomeIso(local: string) { // "2027-01-18T14:00" -> "2027-01-18T14:00:0
 function Inp({ f, v, on }: { f: Field; v: any; on: (x: any) => void }) {
   if (f.type === 'textarea') return <textarea style={{ ...st.input, minHeight: 80 }} value={v ?? ''} onChange={(e) => on(e.target.value)} />;
   if (f.type === 'bool') return <label style={{ display: 'flex', gap: 8, alignItems: 'center' }}><input type="checkbox" checked={!!v} onChange={(e) => on(e.target.checked)} /> Sì</label>;
-  const type = f.type === 'datetime' ? 'datetime-local' : f.type === 'date' ? 'date' : f.type === 'time' ? 'time' : 'text';
+  const type = f.type === 'datetime' ? 'datetime-local' : f.type === 'date' ? 'date' : f.type === 'time' ? 'time' : f.type === 'number' ? 'number' : 'text';
   const val = f.type === 'datetime' ? String(v ?? '').slice(0, 16) : v ?? '';
   return <input style={st.input} type={type} value={val} onChange={(e) => on(e.target.value)} />;
 }
@@ -56,7 +56,7 @@ function Campaigns({ v, on, brands }: { v: any[]; on: (x: any[]) => void; brands
         <div key={i} style={{ ...st.card, background: C.bg, marginTop: 8 }}>
           <div style={{ display: 'flex', gap: 8 }}>
             <select style={{ ...st.input, width: 140 }} value={c.city ?? 'Milan'} onChange={(e) => set(i, { city: e.target.value })}><option>Milan</option><option>Paris</option></select>
-            <input style={st.input} placeholder="Titolo (es. Sales campaign)" value={c.label ?? ''} onChange={(e) => set(i, { label: e.target.value })} />
+            <input style={st.input} placeholder="Titolo (es. Collezione)" value={c.label ?? ''} onChange={(e) => set(i, { label: e.target.value })} />
             <button type="button" style={st.btn} onClick={() => on(list.filter((_, j) => j !== i))}>Elimina</button>
           </div>
           <span style={st.label}>Periodi</span>
@@ -83,7 +83,7 @@ function Campaigns({ v, on, brands }: { v: any[]; on: (x: any[]) => void; brands
           {brands.length === 0 && <div style={st.help}>Aggiungi prima i brand nella sezione Brands.</div>}
         </div>
       ))}
-      <div style={{ marginTop: 8 }}><button type="button" style={st.btn} onClick={() => on([...list, { city: 'Milan', label: 'Sales campaign', ranges: [{ start: '', end: '' }], address: '', brands: [] }])}>+ Campagna</button></div>
+      <div style={{ marginTop: 8 }}><button type="button" style={st.btn} onClick={() => on([...list, { city: 'Milan', label: 'Collezione', ranges: [{ start: '', end: '' }], address: '', brands: [] }])}>+ Campagna</button></div>
     </div>
   );
 }
@@ -106,6 +106,7 @@ function Editor({ cfg, item, brands, existingIds, onCancel, onSave }: {
       if (f.required && (x === undefined || x === '')) return setErr(`Compila il campo "${f.label}".`);
       if (f.type === 'datetime' && x) x = String(x).length === 16 ? toRomeIso(x) : x;
       if (f.type === 'bool') x = x ? true : undefined;
+      if (f.type === 'number') x = x === '' || x === undefined ? undefined : Number(x);
       if (x === '' || x === undefined || (Array.isArray(x) && f.type !== 'campaigns')) delete o[f.key]; else o[f.key] = x;
     }
     if (o.start && o.end && String(o.end) < String(o.start)) return setErr('La fine non può essere prima dell’inizio.');
@@ -168,13 +169,61 @@ function Login() {
   );
 }
 
+
+function Registrations({ events, flash }: { events: any[]; flash: (t: string) => void }) {
+  const [eid, setEid] = useState(events[0]?.id ?? '');
+  const [rows, setRows] = useState<any[]>([]);
+  const load = useCallback(async () => {
+    if (!eid) return setRows([]);
+    const { data, error } = await supabase.from('waooo_registrations').select('*').eq('event_id', eid).order('ticket_no');
+    if (error) flash('Errore: ' + error.message); else setRows(data ?? []);
+  }, [eid]);
+  useEffect(() => { load(); }, [load]);
+  async function del(r: any) {
+    if (!window.confirm(`Eliminare la registrazione di ${r.first_name} ${r.last_name}?`)) return;
+    const { error } = await supabase.from('waooo_registrations').delete().eq('id', r.id);
+    if (error) return flash('Errore: ' + error.message);
+    load();
+  }
+  function csv() {
+    const q = (x: any) => `"${String(x ?? '').replace(/"/g, '""')}"`;
+    const head = ['Biglietto', 'Nome', 'Cognome', 'Email', 'Ruolo', 'Consenso', 'Registrato il'];
+    const lines = rows.map((r) => [`WAOOO-${String(r.ticket_no).padStart(4, '0')}`, r.first_name, r.last_name, r.email, r.role, r.consent_at, r.created_at].map(q).join(','));
+    const blob = new Blob(['\ufeff' + [head.map(q).join(','), ...lines].join('\n')], { type: 'text/csv;charset=utf-8' });
+    const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = `registrazioni-${eid}.csv`; a.click();
+  }
+  return (
+    <>
+      <div style={{ display: 'flex', gap: 10, alignItems: 'center', marginBottom: 10, flexWrap: 'wrap' }}>
+        <h2 style={{ fontFamily: FB, margin: 0 }}>Registrazioni <span style={st.pill}>{rows.length}</span></h2>
+        <select style={{ ...st.input, width: 'auto' }} value={eid} onChange={(e) => setEid(e.target.value)}>
+          {events.map((e) => <option key={e.id} value={e.id}>{e.name}</option>)}
+        </select>
+        <button style={st.btnP} disabled={!rows.length} onClick={csv}>Scarica CSV</button>
+      </div>
+      <div style={st.help}>Dati personali: usali solo per l’evento e cancellali entro i tempi indicati nella privacy policy.</div>
+      {rows.length === 0 && <div style={{ ...st.card, color: C.muted }}>Nessuna registrazione per questo evento.</div>}
+      {rows.map((r) => (
+        <div key={r.id} style={{ ...st.card, display: 'flex', alignItems: 'center', gap: 10 }}>
+          <div style={{ flex: 1, minWidth: 0 }}>
+            <div style={{ fontFamily: FB, fontSize: 15 }}>{r.first_name} {r.last_name}</div>
+            <div style={st.help}>WAOOO-{String(r.ticket_no).padStart(4, '0')} · {r.email} · {r.role}</div>
+          </div>
+          <button style={st.btn} onClick={() => del(r)}>Elimina</button>
+        </div>
+      ))}
+    </>
+  );
+}
+
 function Panel({ session }: { session: Session }) {
   const { data, reload, remote } = useDataControls();
-  const [kind, setKind] = useState<Kind>('runway');
+  const [kind, setKind] = useState<Kind | 'registrations'>('runway');
   const [editing, setEditing] = useState<{ item: any | null } | null>(null);
   const [msg, setMsg] = useState('');
-  const cfg = CONFIG.find((c) => c.kind === kind)!;
-  const items: any[] = data[kind] as any[];
+  const cfg = (CONFIG.find((c) => c.kind === kind) ?? CONFIG[0])!;
+  const isReg = kind === 'registrations';
+  const items: any[] = data[cfg.kind] as any[];
   const ordered = cfg.sortBy ? [...items].sort((a, b) => String(a[cfg.sortBy!]).localeCompare(String(b[cfg.sortBy!]))) : items;
 
   const flash = (t: string) => { setMsg(t); setTimeout(() => setMsg(''), 3500); };
@@ -210,9 +259,9 @@ function Panel({ session }: { session: Session }) {
       </div>
       {!remote && <div style={{ ...st.card, background: '#FDE7E4' }}>I dati non sono stati caricati dal database (connessione?). Ricarica la pagina prima di modificare.</div>}
       {msg && <div style={{ ...st.card, background: C.info, fontFamily: FB }}>{msg}</div>}
-      <div style={st.tabs}>{CONFIG.map((c) => <button key={c.kind} style={tab(c.kind === kind)} onClick={() => { setKind(c.kind); setEditing(null); }}>{c.label}</button>)}</div>
+      <div style={st.tabs}>{CONFIG.map((c) => <button key={c.kind} style={tab(c.kind === kind)} onClick={() => { setKind(c.kind); setEditing(null); }}>{c.label}</button>)}<button style={tab(isReg)} onClick={() => { setKind('registrations'); setEditing(null); }}>Registrazioni</button></div>
 
-      {editing ? (
+      {isReg ? <Registrations events={data.events} flash={flash} /> : editing ? (
         <Editor key={editing.item?.id ?? 'new'} cfg={cfg} item={editing.item} brands={data.brands} existingIds={items.map((x) => x.id)} onCancel={() => setEditing(null)} onSave={save} />
       ) : (
         <>

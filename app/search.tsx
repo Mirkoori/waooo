@@ -20,7 +20,6 @@ export default function Search() {
       ...data.events.map((e) => ({ key: `e-${e.id}`, group: 'Events', title: e.name, sub: e.location, href: '/fashion-week/events' as Href })),
       ...data.tradeShows.map((t) => ({ key: `t-${t.id}`, group: 'Trade shows', title: t.name, sub: t.address, href: '/fashion-week/trade-shows' as Href })),
       ...data.weeks.map((w) => ({ key: `w-${w.id}`, group: 'Fashion weeks', title: w.name, sub: w.city, href: '/fashion-week/weeks' as Href })),
-      ...data.stores.map((s) => ({ key: `st-${s.id}`, group: 'Stores', title: s.name, sub: s.address, href: '/market/stores' as Href })),
       ...data.partners.map((p) => ({ key: `pa-${p.id}`, group: 'Partners', title: p.name, href: '/info/partners' as Href })),
     ];
     const n = q.trim().toLowerCase();

@@ -13,7 +13,7 @@ import stores from './data/stores.json';
 import contacts from './data/contacts.json';
 import partners from './data/partners.json';
 import { supabase } from './supabase';
-import type { Week, Runway, Presentation, EventItem, TradeShow, Showroom, Brand, Store, Contact, Partner } from './types';
+import type { Week, Runway, Presentation, EventItem, TradeShow, Showroom, Brand, Store, Contact, Partner, DateRange } from './types';
 
 export type AppData = {
   weeks: Week[]; runway: Runway[]; presentations: Presentation[]; events: EventItem[];
@@ -58,3 +58,17 @@ export const showroomsForBrand = (data: AppData, brandId: string) =>
   data.showrooms
     .map((s) => ({ showroom: s, campaigns: s.campaigns.filter((c) => c.brands.includes(brandId)) }))
     .filter((x) => x.campaigns.length);
+
+const CITY_ORDER = ['Milan', 'Paris'];
+/** Groups campaigns by city and merges their date ranges (sorted, without duplicates). */
+export function cityRanges(campaigns: Showroom['campaigns']) {
+  const map = new Map<string, DateRange[]>();
+  for (const c of campaigns) {
+    const list = map.get(c.city) ?? [];
+    for (const r of c.ranges) if (!list.some((x) => x.start === r.start && x.end === r.end)) list.push(r);
+    map.set(c.city, list);
+  }
+  return [...map.entries()]
+    .sort(([a], [b]) => CITY_ORDER.indexOf(a) - CITY_ORDER.indexOf(b))
+    .map(([city, ranges]) => ({ city, ranges: ranges.sort((a, b) => a.start.localeCompare(b.start)) }));
+}

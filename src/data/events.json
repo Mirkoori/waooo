@@ -2,10 +2,25 @@
   {
     "id": "artisanal-evolution",
     "name": "Artisanal Evolution",
-    "invitationOnly": true,
+    "date": "2027-01-15",
+    "endDate": "2027-02-05",
     "startTime": "10:00",
     "endTime": "18:00",
-    "description": "A \"Fuori Salone\"-style event held in the showrooms of Camera Showroom Milano members during Fashion Week.",
-    "location": "Participating showrooms, Milan"
+    "invitationOnly": true,
+    "description": "A “Fuori Salone”-style event held in the showrooms of Camera Showroom Milano members during Fashion Week.",
+    "location": "Participating showrooms, Milan",
+    "image": "https://mirkoori.github.io/waooo/events/artisanal-evolution.png"
+  },
+  {
+    "id": "csm-meets-sustainability",
+    "name": "CSM Meets Sustainability",
+    "date": "2027-01-18",
+    "startTime": "18:00",
+    "endTime": "20:00",
+    "invitationOnly": true,
+    "registration": true,
+    "description": "An evening for buyers, press and fashion experts that showcases the eco-sustainable brands of CSM member showrooms through a short film.",
+    "location": "Chiostri di San Barnaba, Via San Barnaba 48, 20122 Milan",
+    "image": "https://mirkoori.github.io/waooo/events/csm-meets-sustainability.png"
   }
 ]

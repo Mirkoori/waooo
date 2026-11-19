@@ -2,7 +2,7 @@ import { Pressable, Text, View } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { Btn, Card, Empty, Header, List, Pill, Screen } from '../../../src/ui';
-import { useData, showroomsForBrand } from '../../../src/data';
+import { useData, showroomsForBrand, cityRanges } from '../../../src/data';
 import { rangeLabel } from '../../../src/dates';
 import { openUrl, sendEmail } from '../../../src/actions';
 import { colors, fonts } from '../../../src/theme';
@@ -12,7 +12,7 @@ export default function BrandDetail() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const router = useRouter();
   const brand = data.brands.find((b) => b.id === id);
-  const header = <Header section="market" label="02 · MARKET" title="BRANDS" />;
+  const header = <Header section="market" label="02 · SALES" title="BRANDS" />;
   if (!brand) return <Screen section="market" header={header}><Empty text="Brand not found." /></Screen>;
   const rooms = showroomsForBrand(data, brand.id);
 
@@ -42,8 +42,8 @@ export default function BrandDetail() {
                 <Feather name="chevron-right" size={14} color={colors.ink} />
               </View>
             </Pressable>
-            {campaigns.map((c, i) => (
-              <View key={i} style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginTop: 8 }}>
+            {cityRanges(campaigns).map((c) => (
+              <View key={c.city} style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginTop: 8 }}>
                 <View style={{ width: 52 }}><Pill label={c.city} /></View>
                 <Text style={{ flex: 1, fontFamily: fonts.bold, fontSize: 10, color: colors.ink }}>{c.ranges.map((r) => rangeLabel(r.start, r.end)).join(' · ')}</Text>
               </View>

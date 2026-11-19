@@ -27,7 +27,7 @@ export default function Runway() {
                     const start = new Date(s.start);
                     addToCalendar({ title: `${s.brand} — runway`, start, end: new Date(start.getTime() + 3600_000), location: s.address, notes: s.notes });
                   }} />
-                  {s.website ? <Btn label="Website" onPress={() => openUrl(s.website!)} /> : null}
+                  <Btn icon="play" label="Live streaming" disabled={!s.streamUrl} onPress={() => openUrl(s.streamUrl!)} />
                 </BtnRow>
               </View>
             </Card>

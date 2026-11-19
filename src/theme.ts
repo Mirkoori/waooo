@@ -23,7 +23,7 @@ export const sections: Record<
   { n: string; title: string; subtitle: string; href: '/fashion-week' | '/market' | '/info'; color: string }
 > = {
   info: { n: '03', title: 'INFO', subtitle: 'CONTACTS · PARTNERS', href: '/info', color: colors.info },
-  market: { n: '02', title: 'MARKET', subtitle: 'SHOWROOMS · BRANDS · STORES', href: '/market', color: colors.market },
+  market: { n: '02', title: 'SALES', subtitle: 'SHOWROOMS · BRANDS', href: '/market', color: colors.market },
   fashion: {
     n: '01',
     title: 'FASHION WEEK',

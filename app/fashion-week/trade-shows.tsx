@@ -19,8 +19,8 @@ export default function TradeShows() {
               <Row icon="map-pin" text={t.address} />
               <BtnRow>
                 <Btn primary icon="calendar" label="Add to calendar" onPress={() => addToCalendar({ title: t.name, start: localDay(t.start), end: localDay(t.end), allDay: true, location: t.address })} />
-                {t.website ? <Btn label="Website" onPress={() => openUrl(t.website!)} /> : null}
-                {t.email ? <Btn icon="mail" label="Email" onPress={() => sendEmail(t.email!)} /> : null}
+                <Btn label="Website" disabled={!t.website} onPress={() => openUrl(t.website!)} />
+                <Btn icon="mail" label="Email" disabled={!t.email} onPress={() => sendEmail(t.email!)} />
               </BtnRow>
             </View>
           </Card>
